@@ -25,6 +25,10 @@ public class IssuesListActivity extends Activity {
 	
 	ListView issuesView, commentsView;
 	Dialog commentsDialog;
+	//TODO: 1. Take owner and repo as input, or on finding owner
+	// auto populate with repos
+	// 2. Send body of comment to comments dialog view to display 
+	// body with comments
     private static final String OWNER = "joyent";
     private static final String REPO = "node";
 	
