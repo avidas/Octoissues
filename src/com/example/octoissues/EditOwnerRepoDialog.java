@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
@@ -13,7 +14,7 @@ import android.widget.TextView.OnEditorActionListener;
 public class EditOwnerRepoDialog extends DialogFragment implements OnEditorActionListener{
 	
 	public interface EditRepoDialogListener {
-		void onFinishEditDialog(String inputText);
+		void onFinishEditDialog(String owner, String repo);
 	}
 	
 	private EditText editOwner;
@@ -32,9 +33,13 @@ public class EditOwnerRepoDialog extends DialogFragment implements OnEditorActio
 
 	@Override
 	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		// TODO Auto-generated method stub
+		if (EditorInfo.IME_ACTION_DONE == actionId) {
+			//Send input owner name and repo name to activity
+			EditRepoDialogListener activity = (EditRepoDialogListener) getActivity();
+			activity.onFinishEditDialog(editOwner.getText().toString(), editRepo.getText().toString());
+			this.dismiss();
+			return true;
+		}
 		return false;
 	}
-
-
 }
