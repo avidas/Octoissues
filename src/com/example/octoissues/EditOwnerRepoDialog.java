@@ -2,12 +2,20 @@ package com.example.octoissues;
 
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class EditOwnerRepoDialog extends DialogFragment {
+public class EditOwnerRepoDialog extends DialogFragment implements OnEditorActionListener{
+	
+	public interface EditRepoDialogListener {
+		void onFinishEditDialog(String inputText);
+	}
+	
 	private EditText editOwner;
 	private EditText editRepo;
 	
@@ -21,6 +29,12 @@ public class EditOwnerRepoDialog extends DialogFragment {
 
         return view;
     }
+
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 
 }
