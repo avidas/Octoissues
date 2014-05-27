@@ -85,6 +85,9 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 					    //Suppressing type cast warning here since it is known that type will be HashMap<String, String>
 				    	@SuppressWarnings("unchecked")
 						Map<String, String>  itemMap = (HashMap<String, String>) issuesView.getItemAtPosition(position);
+				    	
+				    	TextView issueBody = (TextView) commentsDialog.findViewById(R.id.issueBody);
+						issueBody.setText(itemMap.get("body"));
 						
 				    	//Get Github issue number, pass to client to get comments for that issue
 				    	int issueNumber = Integer.parseInt(itemMap.get("issue_number"));
