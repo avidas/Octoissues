@@ -66,10 +66,8 @@ public class GithubClient {
 	        	String title = issue.getString("title");
 	        	String detail = issue.getString("body");
 	        	
-	        	//Display 140 char snippet for list view
-	        	String snippet = (detail != null && detail.length() >= 140) ? detail.substring(0, 140) : detail;
 	        	//Store github issue number for later getting the comments for this particular issue
-	        	issues.add(getMapItem(title, snippet, Integer.toString(issue.getInt("number"))));
+	        	issues.add(getMapItem(title, detail, Integer.toString(issue.getInt("number"))));
 	        }
 		    return issues;
 		} else if (responseJSON instanceof JSONObject) {
@@ -113,9 +111,14 @@ public class GithubClient {
 	 * be controlled via configuration settings
 	 */
 	private HashMap<String, String> getMapItem(String header, String body, String issue_number) {
+		
+    	//Display 140 char snippet for list view
+    	String snippet = (body != null && body.length() >= 140) ? body.substring(0, 140) : body;
+    	
 	    HashMap<String, String> issue = new HashMap<String, String>();
 	    issue.put("header", header);
 	    issue.put("body", body);
+	    issue.put("snippet", snippet);
 	    issue.put("issue_number", issue_number);
 	    return issue;
 	}
