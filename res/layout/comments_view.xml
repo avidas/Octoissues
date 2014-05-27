@@ -8,8 +8,7 @@
      android:id="@+id/issueBody"
      android:layout_width="fill_parent"
      android:layout_height="wrap_content"
-     android:padding="10dp"
-     android:textSize="23sp" />
+     android:gravity="center_vertical" />
  
   <View          
       android:layout_width="fill_parent" 
