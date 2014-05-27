@@ -6,6 +6,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -27,6 +28,11 @@ public class EditOwnerRepoDialog extends DialogFragment implements OnEditorActio
         editOwner = (EditText) view.findViewById(R.id.owner_name);
         editRepo = (EditText) view.findViewById(R.id.repo_name);
         getDialog().setTitle("Enter Owner and Repo");
+        
+        //Display soft keyboard
+        editOwner.requestFocus();
+        getDialog().getWindow().setSoftInputMode(LayoutParams.MATCH_PARENT);
+        editOwner.setOnEditorActionListener(this);
 
         return view;
     }
