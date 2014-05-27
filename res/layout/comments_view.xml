@@ -3,6 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
+
+ <TextView
+     android:id="@+id/issueBody"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:padding="10dp"
+     android:textSize="23sp" />
+ 
+  <View          
+      android:layout_width="fill_parent" 
+      android:layout_height="2dp" 
+      android:background="?android:attr/listDivider" />
     
  <ListView
      android:id="@+id/comments_list"
