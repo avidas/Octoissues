@@ -130,7 +130,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 		protected void onPostExecute(List<Map<String, String>> issues) {
 			if (issues != null) {	
 				//Map fieldnames to listview item elements
-			    String[] from = { "header", "body" };
+			    String[] from = { "header", "snippet" };
 			    int[] to = { android.R.id.text1, android.R.id.text2 };
 	
 			    // Initialize adapter with result as the dataset, using
