@@ -6,13 +6,14 @@ import java.util.Map;
 
 import org.json.JSONException;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -20,26 +21,37 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class IssuesListActivity extends Activity {
+import com.example.octoissues.EditOwnerRepoDialog.EditRepoDialogListener;
+
+public class IssuesListActivity extends FragmentActivity implements EditRepoDialogListener{
 	
 	ListView issuesView, commentsView;
 	Dialog commentsDialog;
 	//TODO: 1. Take owner and repo as input, or on finding owner
 	// auto populate with repos
 	// 2. Send body of comment to comments dialog view to display 
-	// body with comments
+	// body with comments (would need custom layout, include listview
+	// in linearlayout or relativelayout)
     private static final String OWNER = "joyent";
     private static final String REPO = "node";
 	
 	GithubClient client = new GithubClient();
 	
+	private void showEditDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        EditOwnerRepoDialog editNameDialog = new EditOwnerRepoDialog();
+        editNameDialog.show(fm, "fragment_edit_name");
+    }
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.issues_view);
 		
+		showEditDialog();
 		//Set repository name in view
 		TextView repoNameView = (TextView) findViewById(R.id.repoName);
 		repoNameView.setText("Repo Issues");
@@ -73,7 +85,7 @@ public class IssuesListActivity extends Activity {
 					    //Suppressing type cast warning here since it is known that type will be HashMap<String, String>
 				    	@SuppressWarnings("unchecked")
 						Map<String, String>  itemMap = (HashMap<String, String>) issuesView.getItemAtPosition(position);
-				        
+						
 				    	//Get Github issue number, pass to client to get comments for that issue
 				    	int issueNumber = Integer.parseInt(itemMap.get("issue_number"));
 				    	GithubCommentsTask githubCommentsTask = new GithubCommentsTask();
@@ -205,5 +217,10 @@ public class IssuesListActivity extends Activity {
 			return false;
 	    }
 	    return true;
+	}
+
+	@Override
+	public void onFinishEditDialog(String owner, String repo) {
+		Toast.makeText(this, "Hi, " + owner + " " + repo, Toast.LENGTH_SHORT).show();
 	}
 }
