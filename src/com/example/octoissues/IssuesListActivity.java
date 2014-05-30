@@ -34,8 +34,8 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	// 2. Send body of comment to comments dialog view to display 
 	// body with comments (would need custom layout, include listview
 	// in linearlayout or relativelayout)
-    private static final String OWNER = "joyent";
-    private static final String REPO = "node";
+    private static final String OWNER = "paypal";
+    private static final String REPO = "PayPal-Android-SDK";
 	
 	GithubClient client = new GithubClient();
 	
