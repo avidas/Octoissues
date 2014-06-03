@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="OctoissuesTheme" parent="@style/_OctoissuesTheme"/>
+
+  <style name="_OctoissuesTheme" parent="Theme.AppCompat.Light">
+
+    <item name="android:editTextStyle">@style/EditTextOctoissuesTheme</item>
+
+    <item name="android:textColorHighlight">#9933e548</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxOctoissuesTheme</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonOctoissuesTheme</item>
+
+    <item name="android:buttonStyle">@style/ButtonOctoissuesTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonOctoissuesTheme</item>
+
+    <item name="android:spinnerStyle">@style/SpinnerOctoissuesTheme</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemOctoissuesTheme</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarOctoissuesTheme</item>
+
+  </style>
+
+</resources>

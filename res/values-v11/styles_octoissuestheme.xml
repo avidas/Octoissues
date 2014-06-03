@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="ButtonOctoissuesTheme" parent="android:Widget.Holo.Light.Button">
+	  <item name="android:background">@drawable/octoissuestheme_btn_default_holo_light</item>
+  </style>
+
+  <style name="ImageButtonOctoissuesTheme" parent="android:Widget.Holo.Light.ImageButton">
+	  <item name="android:background">@drawable/octoissuestheme_btn_default_holo_light</item>
+  </style>
+
+  <style name="SpinnerOctoissuesTheme" parent="android:Widget.Holo.Light.Spinner">
+      <item name="android:background">@drawable/octoissuestheme_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/octoissuestheme_list_selector_holo_light</item>
+  </style>
+
+  <style name="ProgressBarOctoissuesTheme" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/octoissuestheme_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/octoissuestheme_progress_indeterminate_horizontal_holo_light</item>
+  </style>
+
+</resources>
