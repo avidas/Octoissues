@@ -51,7 +51,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.issues_view);
 		
-		showEditDialog();
+		//showEditDialog();
 		//Set repository name in view
 		TextView repoNameView = (TextView) findViewById(R.id.repoName);
 		repoNameView.setText("Repo Issues");
