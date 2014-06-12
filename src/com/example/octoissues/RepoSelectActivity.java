@@ -16,7 +16,11 @@ public class RepoSelectActivity extends Activity {
         setContentView(R.layout.repo_select_view);
         NumberPicker picker = (NumberPicker) findViewById(R.id.repoPicker);
         String[] values = new String[]{"first", "second"};
+        picker.setMinValue(1);
+        picker.setMaxValue(2);
+        picker.setWrapSelectorWheel(false);
         picker.setDisplayedValues(values);
+        picker.setValue(1);
         Button signin = (Button) findViewById(R.id.view_issues);
         signin.setTextSize(30);    
     }
