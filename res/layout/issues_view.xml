@@ -1,36 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
- android:layout_width="fill_parent" android:layout_height="fill_parent"
- android:orientation="vertical">
-    
- <TextView
-     android:id="@+id/repoName"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:padding="10dp"
-     android:textSize="23sp"
-     android:textStyle="bold" />
- 
- <Spinner 
-	android:id="@+id/spr_repo_name"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content" />  
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
 
- <View          
-      android:layout_width="match_parent"
-      android:layout_height="2dp"
-      android:background="?android:attr/listDivider" />
+    <TextView
+        android:id="@+id/repoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:padding="10dp"
+        android:textSize="23sp"
+        android:textStyle="bold" />
 
- <ListView
-     android:id="@+id/issues_list"
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content"
-     android:cacheColorHint="#00000000"
-     android:dividerHeight="2dp" />
+    <Spinner
+        android:id="@+id/spr_repo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/repoName" />
 
- <View          
-      android:layout_width="fill_parent" 
-      android:layout_height="2dp" 
-      android:background="?android:attr/listDivider" />
- 
-</LinearLayout>
+    <View
+        android:id="@+id/View1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/spr_repo_name"
+        android:background="?android:attr/listDivider" />
+
+    <ListView
+        android:id="@+id/issues_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/View1"
+        android:cacheColorHint="#00000000"
+        android:dividerHeight="2dp" />
+
+    <View
+        android:id="@+id/View2"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/issues_list"
+        android:background="?android:attr/listDivider" />
+
+</RelativeLayout>
