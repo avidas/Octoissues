@@ -3,5 +3,16 @@
 
     <string name="app_name">Octoissues</string>
     <string name="action_settings">Settings</string>
+    <string name="saved_issues_text">Saved Issues</string>
+    <string-array name="sdk_repos">
+        <item>PayPal-Android-SDK</item>
+        <item>PayPal-iOS-SDK</item>
+        <item>rest-api-sdk-python</item>
+        <item>rest-api-sdk-java</item>
+        <item>rest-api-sdk-nodejs</item>
+        <item>rest-api-sdk-dotnet</item>
+        <item>rest-api-sdk-ruby</item>
+        <item>rest-api-sdk-php</item>
+    </string-array>
 
 </resources>
