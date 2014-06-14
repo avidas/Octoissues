@@ -36,6 +36,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	// in linearlayout or relativelayout)
     private static final String OWNER = "paypal";
     private static final String REPO = "PayPal-Android-SDK";
+    //private final String[] SDK_REPOS = getResources().getStringArray(R.array.sdk_repos);
 	
 	GithubClient client = new GithubClient();
 	
@@ -119,7 +120,16 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 				String owner = params[0];
 			    String repo = params[1];
 			    //Get issues sorted by last updated
-				issues = client.getIssues(owner, repo, "updated");
+			    String[] SDK_REPOS = getResources().getStringArray(R.array.sdk_repos);
+			    for(String sdk : SDK_REPOS) {
+			    	if (issues == null) {
+			    		issues = client.getIssues(owner, sdk, "updated");
+			    	}
+			    	else {
+			    		issues.addAll(client.getIssues(owner, sdk, "updated"));
+			    	}
+			    }
+				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -191,7 +201,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 			    commentsDialog.show();
 			} else {
 				displayErrorDialog("Error getting Github Comments");
-			}			    
+			}			     
 		}
 	}
 	
