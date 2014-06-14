@@ -40,6 +40,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	
 	GithubClient client = new GithubClient();
 	
+	//Remove?
 	private void showEditDialog() {
         FragmentManager fm = getSupportFragmentManager();
         EditOwnerRepoDialog editNameDialog = new EditOwnerRepoDialog();
