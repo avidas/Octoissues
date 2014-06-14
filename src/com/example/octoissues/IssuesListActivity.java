@@ -7,6 +7,7 @@ import java.util.Map;
 import org.json.JSONException;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -108,10 +109,14 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	 * -- share code/be expose via interfaces with GithubCommentsTask
 	 */
 	private class GithubIssuesTask extends AsyncTask<String, String, List<Map<String, String>>> {
+		
+		final ProgressDialog dialog = new ProgressDialog(IssuesListActivity.this);
+		
     	@Override
     	protected void onPreExecute() {
     		//Display feedback to user while background process in running
-    		IssuesListActivity.this.setProgressBarIndeterminateVisibility(true);
+    		dialog.setMessage("Fetching SDK Issues...");
+    		dialog.show();
     	}
     	
 		@Override
@@ -153,7 +158,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 			    // Associate the adapter with the view, could update dataset later 
 			    // by invoking notifyDataSetChanged
 			    issuesView.setAdapter(adapter);
-				IssuesListActivity.this.setProgressBarIndeterminateVisibility(false);
+			    dialog.dismiss();
 			} else {
 				displayErrorDialog("Error getting Github Issues");
 			}
@@ -167,6 +172,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	 * item would improve response time
 	 */
 	private class GithubCommentsTask extends AsyncTask<String, String, List<Map<String, String>>> {
+		
 		
     	@Override
     	protected void onPreExecute() {
