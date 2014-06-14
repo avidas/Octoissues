@@ -19,14 +19,17 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.octoissues.EditOwnerRepoDialog.EditRepoDialogListener;
 
-public class IssuesListActivity extends FragmentActivity implements EditRepoDialogListener{
+public class IssuesListActivity extends FragmentActivity implements EditRepoDialogListener, OnItemSelectedListener{
 	
 	ListView issuesView, commentsView;
 	Dialog commentsDialog;
@@ -37,7 +40,8 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	// in linearlayout or relativelayout)
     private static final String OWNER = "paypal";
     private static final String REPO = "PayPal-Android-SDK";
-    //private final String[] SDK_REPOS = getResources().getStringArray(R.array.sdk_repos);
+    private Spinner sprRepoName;
+    TextView repoNameView;
 	
 	GithubClient client = new GithubClient();
 	
@@ -56,8 +60,15 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 		
 		//showEditDialog();
 		//Set repository name in view
-		TextView repoNameView = (TextView) findViewById(R.id.repoName);
+		repoNameView = (TextView) findViewById(R.id.repoName);
 		repoNameView.setText("Repo Issues");
+		
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.sdk_repos, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		sprRepoName = (Spinner) findViewById(R.id.spr_repo_name);
+		
+		sprRepoName.setAdapter(adapter);
+		sprRepoName.setOnItemSelectedListener(this);
 		
 		//Associate the listview with id issues_list in the context of this Activity
 		issuesView = (ListView) findViewById(R.id.issues_list);
@@ -218,7 +229,7 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	private void displayErrorDialog(String message){
 		Dialog dialog = new Dialog(IssuesListActivity.this);
 		dialog.setTitle(message);
-		dialog.show();		
+		dialog.show();
 	}
 	
 	/*
@@ -242,5 +253,15 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	@Override
 	public void onFinishEditDialog(String owner, String repo) {
 		Toast.makeText(this, "Hi, " + owner + " " + repo, Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int position,
+			long id) {
+
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
 	}
 }
