@@ -3,7 +3,7 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/ic_menu_preferences"
         android:showAsAction="ifRoom|withText"
         android:title="@string/action_settings"/>
     
@@ -11,6 +11,7 @@
         android:id="@+id/saved_issues"
         android:orderInCategory="100"
         android:showAsAction="ifRoom|withText"
+        android:icon="@drawable/ic_menu_archive"
         android:title="@string/saved_issues_text"/>
 
 </menu>
