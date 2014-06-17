@@ -9,10 +9,12 @@ import org.json.JSONException;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
@@ -57,6 +59,9 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.issues_view);
+		
+		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+		String userName = sharedPref.getString("repo_name_pref", "");
 		
 		//showEditDialog();
 		//Set repository name in view
@@ -258,6 +263,8 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
+		
+		Toast.makeText(this, "Hi, " + parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
 
 	}
 
