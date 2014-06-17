@@ -9,6 +9,7 @@ import org.json.JSONException;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -30,6 +32,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.octoissues.EditOwnerRepoDialog.EditRepoDialogListener;
+import com.paypal.yamba.PrefsActivity;
+import com.paypal.yamba.StatusActivity;
 
 public class IssuesListActivity extends FragmentActivity implements EditRepoDialogListener, OnItemSelectedListener{
 	
@@ -61,7 +65,10 @@ public class IssuesListActivity extends FragmentActivity implements EditRepoDial
 		setContentView(R.layout.issues_view);
 		
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-		String userName = sharedPref.getString("repo_name_pref", "");
+		String repoName = sharedPref.getString("repo_name_pref", "");
+		if (TextUtils.isEmpty(repoName)) {
+			startActivity(new Intent(this, PrefsActivity.class));
+		}
 		
 		//showEditDialog();
 		//Set repository name in view
